@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Player!
+{% endblock %}
+
+{% block body %}
+  <style>
+    .example-wrapper {
+      margin: 1em auto;
+      max-width: 800px;
+      width: 95%;
+      font: 18px/1.5 sans-serif;
+    }
+    .example-wrapper code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+    }
+  </style>
+
+  <div class="container">
+    {% for message in app.flashes('notice') %}
+      <div class="alert alert-success mt-4">{{ message }}</div>
+    {% endfor %}
+    <br />
+    <br />
+    <br />
+    <br />
+    <h1>Player</h1>
+    <br />
+    <a class="btn btn-success" href="{{ path('playerCreate') }}">+ New Player</a>
+    <a class="btn btn-info" href="{{ path('team') }}">Team</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Team</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in list %}
+          <tr>
+            <th scope="row">{{ data.id }}</th>
+            <td>{{ data.name }}</td>
+            <td>{{ data.surname }}</td>
+            <td>{{ data.team }}</td>
+            <td>
+              <a class="btn btn-info" href="{{ path('playerUpdate', { id: data.id }) }}">Update</a>
+              <a class="btn btn-danger" href="{{ path('playerDelete', { id: data.id }) }}">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="navigation">
+      {{ knp_pagination_render(list) }}
+    </div>
+
+  </div>
+{% endblock %}

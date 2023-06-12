@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+   Team!
+{% endblock %}
+
+{% block body %}
+  <style>
+    .example-wrapper {
+      margin: 1em auto;
+      max-width: 800px;
+      width: 95%;
+      font: 18px/1.5 sans-serif;
+    }
+    .example-wrapper code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+    }
+  </style>
+
+  <div class="container">
+    {% for message in app.flashes('notice') %}
+      <div class="alert alert-success mt-4">{{ message }}</div>
+    {% endfor %}
+    <br />
+    <br />
+    <br />
+    <br />
+    <h1>Team</h1>
+    <br />
+    <a class="btn btn-success" href="{{ path('teamCreate') }}">+ New Team</a>
+    <a class="btn btn-info" href="{{ path('player') }}">Players</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Country</th>
+          <th scope="col">Money</th>
+          <th scope="col">Players</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in list %}
+          <tr>
+            <th scope="row">{{ data.id }}</th>
+            <td>{{ data.name }}</td>
+            <td>{{ data.country }}</td>
+            <td>{{ data.money }}</td>
+            <td>
+                {% for player in data.players %}
+                    <button class="btn btn-primary">{{ player.name }}</button>{% if not loop.last %} {% endif %}
+                {% endfor %}
+              </td>
+              <td>
+              <a class="btn btn-secondary" href="{{ path('teamBuy', { id: data.id }) }}">Buy</a>
+              <a class="btn btn-dark" href="{{ path('teamSell', { id: data.id }) }}">Sell</a>
+              <a class="btn btn-info" href="{{ path('teamUpdate', { id: data.id }) }}">Update</a>
+              <a class="btn btn-danger" href="{{ path('teamDelete', { id: data.id }) }}">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+     
+    <div class="navigation">
+        {{ knp_pagination_render(list) }}
+    </div>
+  </div>
+{% endblock %}

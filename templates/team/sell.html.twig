@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h3 class="mt-5 mb-5">Buy Players</h3>
+			{% for message in app.flashes('notice') %}
+				<div class="alert alert-success mt-4">
+					{{message}}
+				</div>
+			{% endfor %}
+            <div class="col-md-6 offset-md-3">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.country) }}
+                    {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.money) }}
+                    {{ form_widget(form.money, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.teams) }}
+                    {% for choice in form.teams %}
+                        <div class="form-check">
+                            {{ form_widget(choice) }}
+                            {{ form_label(choice) }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.sell_players) }}
+                    {% for choice in form.sell_players %}
+                        <div class="form-check">
+                            {{ form_widget(choice) }}
+                            {{ form_label(choice) }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info mt-2 text-white">Submit</button>
+                    <hr>
+                    <a class="btn btn-danger float-end" href="{{ path('team') }}">Cancel</a>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
