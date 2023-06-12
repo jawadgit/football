@@ -44,9 +44,11 @@
 
   -- easyadmin not used at all
 - Treat the task as a full-fledged project.
+
   -- Tried my level best to complete all tasks
 
 - Demo
+
   -- working project video attached in mail
 
 # ToDo (if more time provided)
