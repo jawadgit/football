@@ -20,23 +20,32 @@
 
 # Task
 - Make a page (with pagination) displaying all teams and their players.
+
   -- DONE
 - Make a page where we can add a new team and its players.
+
   -- DONE
 - Make a page where we can sell/buy a player for a certain amount between two teams.
+
   -- DONE
 - You should use the Symfony PHP Framework (please don't use API Platform).
+
   -- DONE
 - Follow PSR-12/PER, in JS follow JavaScript Standard Style.
+
   -- DONE
 - Unit tests are welcome.
+
   -- DONE (each controller 2 test done )
 - Add a README file with installation and startup instructions.
+
   -- DONE
 - Do not use CRUD bundles like EasyAdmin.
+
   -- easyadmin not used at all
 - Treat the task as a full-fledged project.
   -- Tried my level best to complete all tasks
+
 - Demo
   -- working project video attached in mail
 
